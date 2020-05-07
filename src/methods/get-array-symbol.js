@@ -1,11 +1,11 @@
-const request = require('../helpers/request');
+const request = require('../helpers/request/index');
 const config = require('./config');
 
 async function getSymbolCurrency(arraySymbol) {
   let arrayData = [];
   for (let i = 0; i < arraySymbol.length; i++) {
     let opt = {
-      url: `${config.LINK}?${arraySymbol[i]}USDT`,
+      url: `${config.LINK}?symbol=${arraySymbol[i]}USDT`,
       timeout: 5000
     };
     let data = await (await request(opt)).data;
